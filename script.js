@@ -18,3 +18,32 @@ btnCopy.addEventListener('click',async()=>{
     alert("There is no password to copy");
   }
 });
+
+/*
+ASCII - American Standard Code for Information Interchange
+
+0-128
+0-255
+
+65-90  -  A-Z
+97-122 -  a-z
+48-57  -  0-9
+32     -  space
+
+*/
+
+
+function generateRandomChar(min,max)
+{
+  const limit=max-min+1;
+  return String.fromCharCode(Math.floor(Math.random()*limit)+min);
+}
+
+function captitalValue(){
+  return generateRandomChar(65,90);
+}
+function smallValue(){
+  return generateRandomChar(97,122);
+}
+
+
