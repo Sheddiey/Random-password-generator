@@ -46,4 +46,56 @@ function smallValue(){
   return generateRandomChar(97,122);
 }
 
+function numberValue(){
+  return generateRandomChar(48,57);
+}
 
+function symbolValue(){
+  const symbols="~!@#$%^&*()_+|}{<>*./";
+  return symbols[Math.floor(Math.random()*symbols.length)];
+}
+
+
+const functionArray=[
+  {
+    element:numberElement,
+    fun:numberValue
+  },
+  {
+    element:captialElement,
+    fun:captitalValue
+  },
+  {
+    element:smallElement,
+    fun:smallValue
+  },
+  {
+    element:symbolElement,
+    fun:symbolValue
+  }
+
+
+];
+
+
+frm.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  
+  const limit=passwordLengthElement.value;
+
+
+  let generatedPassword="";
+
+  const funArray=functionArray.filter(({element})=>element.checked);
+  //console.log(funArray);
+
+  for(i=0;i<limit;i++){
+    const index=Math.floor(Math.random()*funArray.length);
+    const letter=funArray[index].fun();
+    generatedPassword+=letter;//5$
+  }
+
+
+
+  outputElement.value=generatedPassword;
+});
